@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0; padding: 0;
+        }
+
+        body,html{
+            height: 250px; width: 300px; overflow: hidden; position: relative;top: 0; left: 0;
+        }
+
+        .ad_box{
+            height: 250px; width: 300px; position: absolute;top: 0; left: 0;
+        }
+
+        .gif_control{
+            height: 250px; width: 300px; position: absolute;top: 0;left: 0;
+        }
+
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.3);
+            z-index: 1;
+            height: 250px;
+            width: 300px;
+            display: none;
+            transition: all 6s ease;
+        }
+
+        .shot_1,.shot_2{
+            position: absolute;
+            z-index: 2;
+            padding: 3px;
+            background-color: rgba(0,0,0,1);
+            color: white;
+            letter-spacing: 2px;
+            outline: 0;
+            border: 0;
+            top: 71%;
+            border-radius: 5px;
+        }
+
+        .shot_1{
+            left: 0px;
+            height: 30px;
+        }
+
+        .shot_2{
+            right: 0px;
+            height: 30px;
+        }
+
+        .question{
+            text-align: center;
+            margin-top: 15px;
+            left: 20px;
+            color: white;
+            font-weight: bold;
+            font-family: Georgia;
+            animation: shake 2s infinite ease;
+        }
+
+        @keyframes shake {
+            0%,100%{
+                transform: scale(0.8);
+            }
+            50%{
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ad_box">
+        <div class="element_1"><img src="cover_drive.gif" class="gif_control"/></div>
+    </div>
+    <div class="overlay">
+        <h2 class="question">Name of the shot?</h2>
+        <button type="button" class="shot_1" onclick="writeGuess()">Cover Drive</button>
+        <button type="button" class="shot_2" onclick="wrongGuess()">Straight Drive</button>
+    </div>
+
+<script>
+    var overlay = document.querySelector('.overlay');
+    var title = document.querySelector('.question');
+    // var shot1 = document.querySelector('.shot_1');
+    // var shot2 = document.querySelector('.shot_2');
+
+    setTimeout(function () {
+        overlay.style.display = "block";
+    },4e3)
+
+    function writeGuess() {
+        title.innerHTML = "You Win!"
+    }
+    function wrongGuess() {
+        title.innerHTML = "You Lose!"
+    }
+
+
+
+</script>
+</body>
+</html>

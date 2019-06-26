@@ -1,0 +1,61 @@
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+
+.container{
+    height: 250px;
+    width: 300px;
+    background-image: url("DQRSD.png");
+    background-size: 300px 250px;
+    background-repeat: no-repeat;
+    margin: auto;
+    padding-top: 10px;
+    text-align: center;
+}
+
+
+.dice-shape{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+
+.dice{
+    text-align: center;
+    display: inline-block;
+}
+
+h1{
+    margin: 0px;
+    text-shadow: 3px 0px dimgrey;
+    font-size: 2.6rem;
+    color: #000000;
+}
+
+
+.dice p{
+    margin: 0;
+}
+
+button{
+    margin: 2.5%;
+    padding: 10px;
+    background-color: black;
+    outline: 0;
+    border: none;
+    color: white;
+    animation: fade 1s ease-in-out infinite;
+}
+
+
+@keyframes fade {
+    from{
+        transform: scale(1) translate(1px, -1px);
+    }
+    to{
+        transform: scale(0.95) translate(-1px, 1px);
+    }
+}

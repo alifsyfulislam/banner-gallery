@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    height: 250px;
+    width: 300px;
+    background-image: url("336X280background.jpg");
+    background-size: 300px 250px;
+    background-repeat: no-repeat;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.absolute{
+    position: absolute;
+}
+
+.slide_1{
+    height: 250px;
+    width: 300px;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+}
+
+
+.red_slide{
+    height: 250px;
+    width: 300px;
+    background-image: url("336X280green.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    animation: redSlide 1.5s linear 1;
+}
+
+
+.sil_slide{
+    height: 250px;
+    width: 300px;
+    background-image: url("336X280greenshadow.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    animation: silSlide 2.5s linear 1;
+}
+
+
+.fur_slide{
+    height: 250px;
+    width: 300px;
+    background-image: url("336X280image.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    animation: furSlide 2s linear 1;
+}
+
+.text_1{
+    font-size: 12px;
+    font-weight: bold;
+    top: 175px;
+    left: 10px;
+    animation: text1in 2s 1 linear;
+}
+
+@keyframes silSlide {
+    from{
+        top: -250px;
+        left: 600px;
+    }
+    to{
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes redSlide {
+    from{
+        top: -250px;
+        left: 600px;
+    }
+    to{
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes furSlide {
+    from{
+        top: -250px;
+        left: 600px;
+    }
+    to{
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes text1in {
+    0%{
+        left: -200px;
+        opacity: 0;
+    }
+    50%{
+        left: -100px;
+        opacity: 0.5;
+    }
+    to{
+        left: 10px;
+    }
+}
+
+
+.title_1{
+    top: 190px;
+    left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #f1292b;
+    animation: title1in 1.5s linear 1;
+}
+
+.title_2{
+    top: 215px;
+    left: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #f1292b;
+    animation: title2in 1.5s linear 1;
+}
+
+@keyframes title1in {
+    0%{top: 180px;opacity: 0;}
+    50%{top: 185px;opacity: 0;}
+    100%{top: 190px;}
+}
+
+@keyframes title2in {
+    0%{top: 225px;opacity: 0;}
+    50%{top: 220px;opacity: 0;}
+    100%{top: 215px;}
+}
+
+
+.logo_icon{
+    top: 180px;
+    left: 185px;
+    animation: fadein 2.5s 1 linear;
+}
+
+@keyframes fadein {
+    0%,50%{opacity: 0}
+    100%{opacity: 1}
+}
+
+.shop_btn{
+    background-color: #f1292b;
+    width: 90px;
+    height: 25px;
+    top: 205px;
+    left: 182px;
+    animation: fadein 1.5s 1 linear;
+}
+
+.shop_btn div{
+    width: 100%;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 13px;
+    color: white;
+}
+
+
+.slide_1:hover .shop_btn div{
+    animation: swing .8s linear 1;
+}
+
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+
+.url_text{
+    color: #f1292b;
+    font-size: 10px;
+    top: 233px;
+    left: 176px;
+    animation: scrollup 2s ease 1;
+}
+
+@keyframes scrollup {
+    from{
+        top:243px;
+        opacity: 0;
+    }
+    to{
+        top: 233px;
+        opacity: 1;
+    }
+}
