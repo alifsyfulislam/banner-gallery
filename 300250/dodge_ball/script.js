@@ -53,21 +53,6 @@ function ballMove() {
     thanosLight.style.left = xBall+'px';
     thanosLight.style.top = yBall+'px';
     timerA = setTimeout(ballMove,40);
-    if ((mouseAlertX < xBall+25) && (mouseAlertX+25 > xBall) && (mouseAlertY < yBall+25) && (mouseAlertY+25 > yBall))
-    {
-        clearTimeout(timerA);
-        adBox.className = adBox.className.replace('show', 'hidden'); 
-        adBox2.className = adBox2.className.replace('hidden', 'show'); 
-        document.getElementById("scoreId").innerHTML = "Game Over! Score: " + score;
-    }
-
-    else if ((touchAlertX < xBall+10) && (touchAlertX+10 > xBall) && (touchAlertY < yBall+10) && (touchAlertY+10 > yBall))
-    {
-        clearTimeout(timerA);
-        adBox.className = adBox.className.replace('show', 'hidden'); 
-        adBox2.className = adBox2.className.replace('hidden', 'show'); 
-        document.getElementById("scoreId").innerHTML = "Game Over! Score: " + score;
-    }
     score++;
     speedInc = score*0.05;
 }
@@ -86,6 +71,14 @@ function mouseDetect(e){
         thanosHand.style.left = mouseAlertX+'px';
         thanosHand.style.top = mouseAlertY+'px';
     }
+	
+	if ((mouseAlertX < xBall+30) && (mouseAlertX+30 > xBall) && (mouseAlertY < yBall+30) && (mouseAlertY+30 > yBall))
+    {
+        clearTimeout(timerA);
+        adBox.className = adBox.className.replace('show', 'hidden'); 
+        adBox2.className = adBox2.className.replace('hidden', 'show'); 
+        document.getElementById("scoreId").innerHTML = "Game Over! Score: " + score;
+    }
 }
 
 var touchAlertX,touchAlertY;
@@ -93,10 +86,17 @@ var touchAlertX,touchAlertY;
 function touchDetect(e){
     touchAlertX = Math.floor(e.touches[0].clientX);
     touchAlertY = Math.floor(e.touches[0].clientY);
-    console.log(touchAlertY);
     if (touchAlertX>=0 && touchAlertX<250 && touchAlertY>=0 && touchAlertY<215) {
         thanosHand.style.left = touchAlertX+'px';
         thanosHand.style.top = touchAlertY+'px';
+    }
+	
+	if ((touchAlertX < xBall+50) && (touchAlertX+50 > xBall) && (touchAlertY < yBall+35) && (touchAlertY+35 > yBall))
+    {
+        clearTimeout(timerA);
+        adBox.className = adBox.className.replace('show', 'hidden'); 
+        adBox2.className = adBox2.className.replace('hidden', 'show'); 
+        document.getElementById("scoreId").innerHTML = "Game Over! Score: " + score;
     }
 }
 
