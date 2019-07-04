@@ -60,7 +60,7 @@ html, body{
 
 
 .flag_animate{
-    animation: btos 2s ease infinite;
+    animation: btos 2s linear infinite;
 }
 
 @keyframes btos {
@@ -82,6 +82,24 @@ html, body{
 .flag{
     height: 55px;
     width: 55px;
+}
+
+.click{
+    height: 30px;
+    width: 30px;
+    bottom: 7px;
+    left: 220px;
+    animation: lr .6s linear infinite;
+}
+
+@keyframes lr{
+    0%,100%{left: 185px;}
+    50%{left: 255px; }
+}
+
+.click_icon{
+    height: 30px;
+    width: 30px;
 }
 
 #vid{

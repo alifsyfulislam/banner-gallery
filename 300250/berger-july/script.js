@@ -7,6 +7,9 @@ var teamBflag =  document.querySelector('.teamB_flag img');
 var teamAicon =  document.querySelector('.teamA_icon img');
 var teamBicon =  document.querySelector('.teamB_icon img');
 
+var teamA_prediction = document.querySelector('.predict_box1');
+var teamB_prediction = document.querySelector('.predict_box2');
+
 var linkTest = document.querySelector('.link_text');
 
 var prediction1,prediction2;
@@ -37,14 +40,6 @@ var today = new Date();
 var currDate = today.getDate();
 
 switch(currDate){
-    case 3:
-        prediction1 = countryName[3];
-        prediction2 = countryName[5];
-        teamAflag.src = url + countryFlag[3];
-        teamBflag.src = url + countryFlag[5];
-        teamAicon.src = url + countryFlag[3];
-        teamBicon.src = url + countryFlag[5];
-        break;
     case 4:
         prediction1 = countryName[1188];
         prediction2 = countryName[9];
@@ -77,6 +72,7 @@ switch(currDate){
 teamAflag.addEventListener('click',takeFirst);
 teamBflag.addEventListener('click',takeSecond);
 linkTest.addEventListener('click',landingPage);
+slide3.addEventListener('click',landingPage);
 
 
 function takeFirst() {
