@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 250px;
+    width: 300px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+
+/* MOVIE POSTERS */
+
+#movieposters {
+    padding: 20px 25px;
+    height: 250px;
+    width: 300px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#movieposters .moviedetails {
+    display: inline;
+    float: left;
+    -webkit-perspective: 500;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-property: perspective;
+    -webkit-transition-duration: 1.5s;
+}
+
+
+#movieposters .moviedetails:hover {
+    -webkit-perspective: 5000;
+}
+
+#movieposters .moviedetails img {
+    height: 200px;
+    width: 250px;
+    border: 10px solid #fcfafa;
+    -webkit-transform: rotateY(30deg);
+    -moz-box-shadow: 0 3px 10px #888;
+    -webkit-box-shadow: 0 3px 10px #888;
+    -webkit-transition-property: transform;
+    -webkit-transition-duration: 0.5s;
+}
+
+#movieposters .moviedetails:hover img {
+    -webkit-transform: rotateY(0deg);
+}
+
+.movieinfo {
+    border: 5px solid #fcfafa;
+    /*padding: 5px;*/
+    width: 200px;
+    height: 150px;
+    background-color: #deddcd;
+    margin: -135px 0 0 45px;
+    position: absolute;
+    -moz-box-shadow: 0 20px 40px #888;
+    -webkit-box-shadow: 0 20px 40px #888;
+    -webkit-transform: translateZ(30px) rotateY(30deg);
+    -webkit-transition-property: transform, box-shadow, margin;
+    -webkit-transition-duration: 0.5s;
+    opacity: 0;
+    text-align: center;
+}
+
+#movieposters .moviedetails:hover .movieinfo {
+    -webkit-transform: rotateY(0deg);
+    -webkit-box-shadow: 0 5px 10px #888;
+    margin: -175px 0 0 25px;
+    opacity: 1;
+}
+
+.movieinfo h3 {
+    color: #7a3f3a;
+    font-variant: small-caps;
+    font-family: Georgia, serif, Times;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
+
+.movieinfo p{
+    text-align: center;
+}
+
+
+
+.movieinfo a {
+    background-color: #7a3f3a;
+    padding: 5px 10px;
+    color: #eee;
+    text-decoration: none;
+    display: block;
+    width: 100px;
+    text-align: center;
+    margin: 15px auto;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.movieinfo a:hover,
+.movieinfo a:focus {
+    background-color: #6a191f;
+    color: #fff;
+}

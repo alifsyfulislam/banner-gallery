@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 250px;
+            width: 300px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid gray;
+        }
+        
+        .placeholder {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        
+        .gridContainer {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gridTile {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-origin: center;
+        }
+
+        .test{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 100000000000000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test">Hover Me/ Tap Me!</div>
+    <div class="placeholder"></div>
+</body>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+
+<script type="text/javascript">
+    var options = {
+        imgSrc: "front-page-ad.jpg",
+        containerName: "placeholder",
+        rows: 7,
+        columns: 7,
+        margin: .3,
+        animTime: 0.3
+    }
+
+    function ImageGrid(defaults) {
+        var r = defaults.rows;
+        var c = defaults.columns;
+        var margin = defaults.margin;
+
+        var placeholder = document.getElementsByClassName(defaults.containerName)[0];
+        var container = document.createElement('div');
+        container.className = "gridContainer";
+        placeholder.appendChild(container);
+
+        var gridTile;
+
+        var w = (container.offsetWidth / c) - margin;
+        var h = (container.offsetHeight / r) - margin;
+        var arr = [];
+
+        for (var i = 0, l = r * c; i < l; i++) {
+            gridTile = document.createElement('div');
+            gridTile.className = "gridTile";
+            gridTile.style.backgroundImage = "url(" + defaults.imgSrc + ")";
+
+            arr = [(w + margin) * (i % c), (h + margin) * Math.floor(i / c), ((w + margin) * (i % c) + w - margin), (h + margin) * Math.floor(i / c), ((w + margin) * (i % c) + w - margin), ((h + margin) * Math.floor(i / c) + h - margin), (w + margin) * (i % c), ((h + margin) * Math.floor(i / c) + h - margin)];
+
+            // console.log(i + " ====>>> " + arr + " ||||| " + i%c  + " |||||| " + i/c);  
+
+            TweenMax.set(gridTile, {
+                webkitClipPath: 'polygon(' + arr[0] + 'px ' + arr[1] + 'px,' + arr[2] + 'px ' + arr[3] + 'px, ' + arr[4] + 'px ' + arr[5] + 'px, ' + arr[6] + 'px ' + arr[7] + 'px)',
+                clipPath: 'polygon(' + arr[0] + 'px ' + arr[1] + 'px,' + arr[2] + 'px ' + arr[3] + 'px, ' + arr[4] + 'px ' + arr[5] + 'px, ' + arr[6] + 'px ' + arr[7] + 'px)'
+            });
+
+            container.appendChild(gridTile);
+
+            fixTilePosition(gridTile, i);
+        }
+
+        placeholder.addEventListener("mouseover", function(e) {
+            var allTiles = e.currentTarget.querySelectorAll(".gridTile");
+            for (var t = 0, le = allTiles.length; t < le; t++) {
+                TweenMax.to(allTiles[t], defaults.animTime, {
+                    css: {
+                        backgroundPosition: "0px 0px"
+                    },
+                    ease: Power1.easeOut
+                });
+            }
+        })
+
+        placeholder.addEventListener("touchstart", function(e) {
+            var allTiles = e.currentTarget.querySelectorAll(".gridTile");
+            for (var t = 0, le = allTiles.length; t < le; t++) {
+                TweenMax.to(allTiles[t], defaults.animTime, {
+                    css: {
+                        backgroundPosition: "0px 0px"
+                    },
+                    ease: Power1.easeOut
+                });
+            }
+        })
+
+        placeholder.addEventListener("mouseleave", function(e) {
+            var allTiles = e.currentTarget.querySelectorAll(".gridTile");
+            for (var ti = 0, len = allTiles.length; ti < len; ti++) {
+                fixTilePosition(allTiles[ti], ti, defaults.animTime);
+            }
+        })
+
+        placeholder.addEventListener("touchend", function(e) {
+            var allTiles = e.currentTarget.querySelectorAll(".gridTile");
+            for (var ti = 0, len = allTiles.length; ti < len; ti++) {
+                fixTilePosition(allTiles[ti], ti, defaults.animTime);
+            }
+        })
+
+        function fixTilePosition(tile, ind, time) {
+            if (time == null) time = 0;
+            var centr, centrCol, centrRow, offsetW, offsetH, left, top;
+
+            centr = Math.floor(c * r / 2);
+            centrCol = Math.ceil(centr / c);
+            centrRow = Math.ceil(centr / r);
+
+            offsetW = w / centrCol;
+            offsetH = h / centrRow;
+
+            left = (Math.round((ind % c - centrCol + 1) * offsetW));
+            top = (Math.round((Math.floor(ind / c) - centrRow + 1) * offsetH));
+
+            //console.log(left, top)
+
+            TweenMax.to(tile, time, {
+                css: {
+                    backgroundPosition: left + "px " + top + "px"
+                },
+                ease: Power1.easeOut
+            });
+        }
+    }
+
+    ImageGrid(options);
+</script>
+
+</html>
